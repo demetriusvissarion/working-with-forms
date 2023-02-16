@@ -22,7 +22,7 @@ const useInput = (validateValue) => {
   };
 
   // Error style classes
-  const inputError = hasError ? "form-control invalid" : "form-control";
+  const styleClasses = hasError ? "form-control invalid" : "form-control";
 
   return {
     value: enteredValue,
@@ -31,7 +31,7 @@ const useInput = (validateValue) => {
     valueChangeHandler: valueChangedHandler,
     inputBlurHandler: inputBlurHandler,
     reset: reset,
-    inputError: inputError,
+    styleClasses: styleClasses,
   };
 };
 
