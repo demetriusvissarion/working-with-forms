@@ -21,6 +21,9 @@ const useInput = (validateValue) => {
     setIsTouched(false);
   };
 
+  // Error style classes
+  const inputError = hasError ? "form-control invalid" : "form-control";
+
   return {
     value: enteredValue,
     isValid: valueIsValid,
@@ -28,6 +31,7 @@ const useInput = (validateValue) => {
     valueChangeHandler: valueChangedHandler,
     inputBlurHandler: inputBlurHandler,
     reset: reset,
+    inputError: inputError,
   };
 };
 

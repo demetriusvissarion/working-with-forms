@@ -8,6 +8,7 @@ const BasicForm = (props) => {
     valueChangeHandler: firstNameChangeHandler,
     inputBlurHandler: firstNameBlurHandler,
     reset: resetFirstNameInput,
+    inputError: firstNameInputClasses,
   } = useInput((value) => value.trim() !== "");
 
   const {
@@ -17,6 +18,7 @@ const BasicForm = (props) => {
     valueChangeHandler: lastNameChangeHandler,
     inputBlurHandler: lastNameBlurHandler,
     reset: resetLastNameInput,
+    inputError: lastNameInputClasses,
   } = useInput((value) => value.trim() !== "");
 
   const {
@@ -26,6 +28,7 @@ const BasicForm = (props) => {
     valueChangeHandler: emailChangeHandler,
     inputBlurHandler: emailBlurHandler,
     reset: resetEmailInput,
+    inputError: emailInputClasses,
   } = useInput((value) => value.includes("@"));
 
   // Validation
@@ -49,17 +52,6 @@ const BasicForm = (props) => {
     resetLastNameInput();
     resetEmailInput();
   };
-
-  // Error style classes
-  const firstNameInputClasses = firstNameInputHasError
-    ? "form-control invalid"
-    : "form-control";
-  const lastNameInputClasses = lastNameInputHasError
-    ? "form-control invalid"
-    : "form-control";
-  const emailInputClasses = emailInputHasError
-    ? "form-control invalid"
-    : "form-control";
 
   return (
     <form onSubmit={formSubmissionHandler}>
