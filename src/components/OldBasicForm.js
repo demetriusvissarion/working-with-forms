@@ -1,32 +1,25 @@
-import useInput from "../hooks/basic-use-input";
+import { useState } from "react";
 
 const BasicForm = (props) => {
-  const {
-    value: enteredFirstName,
-    isValid: enteredFirstNameIsValid,
-    hasError: firstNameInputHasError,
-    valueChangeHandler: firstNameChangedHandler,
-    inputBlurHandler: firstNameBlurHandler,
-    reset: resetFirstNameInput,
-  } = useInput((value) => value.trim() !== "");
+  const [enteredFirstName, setEnteredFirstName] = useState("");
+  const [firstNameIsTouched, setFirstnameIsTouched] = useState(false);
 
-  const {
-    value: enteredLastName,
-    isValid: enteredLastNameIsValid,
-    hasError: lastNameInputHasError,
-    valueChangeHandler: lastNameChangedHandler,
-    inputBlurHandler: lastNameBlurHandler,
-    reset: resetLastNameInput,
-  } = useInput((value) => value.trim() !== "");
+  const [enteredLastName, setEnteredLastName] = useState("");
+  const [lastNameIsTouched, setLastnameIsTouched] = useState(false);
 
-  const {
-    value: enteredEmail,
-    isValid: enteredEmailIsValid,
-    hasError: emailInputHasError,
-    valueChangeHandler: emailChangedHandler,
-    inputBlurHandler: emailBlurHandler,
-    reset: resetEmailInput,
-  } = useInput((value) => value.includes("@"));
+  const [enteredEmail, setEnteredEmail] = useState("");
+  const [emailIsTouched, setEmailIsTouched] = useState(false);
+
+  // Form Validation
+  const enteredFirstNameIsValid = enteredFirstName.trim() !== "";
+  const firstNameInputIsInvalid =
+    !enteredFirstNameIsValid && firstNameIsTouched;
+
+  const enteredLastNameIsValid = enteredLastName.trim() !== "";
+  const lastNameInputIsInvalid = !enteredLastNameIsValid && lastNameIsTouched;
+
+  const enteredEmailIsValid = enteredEmail.includes("@");
+  const emailInputIsInvalid = !enteredEmailIsValid && emailIsTouched;
 
   let formIsValid = false;
 
